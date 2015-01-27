@@ -409,7 +409,7 @@ abstract class quickmail {
         $sql = "SELECT DISTINCT u.id, " . $get_name_string . ", u.email, u.mailformat, u.suspended, u.maildisplay, g.id gid
                 FROM {role_assignments} ra
                 JOIN {user} u ON u.id  = ra.userid
-                JOIN mdl_role r ON ra.roleid = r.id
+                JOIN {role} r ON ra.roleid = r.id
                 LEFT JOIN {groups_members} gm ON gm.userid = u.id
                 LEFT JOIN {groups} g ON g.id = gm.groupid AND g.courseid = ?
                 WHERE ra.contextid = ?
@@ -420,7 +420,7 @@ abstract class quickmail {
                     FROM {user} u
                     JOIN {user_enrolments} ue
                     ON u.id = ue.userid
-                    JOIN mdl_enrol en
+                    JOIN {enrol} en
                     ON en.id = ue.enrolid
                     WHERE en.courseid = ?
                     AND ue.status = 1
